@@ -7,27 +7,36 @@ import './App.css';
 
 function App() {
 
-  // How many users to fetch
+  // How many users to fetch from API
   const userCount = 20;
   
   const [persons, setPersons] = useState([]);
-  const [groupA, setGroupOne] = useState([]);
-  const [groupB, setGroupTwo] = useState([]);
+  
+  const [groupA, setGroupA] = useState([]);
+  const [groupB, setGroupB] = useState([]);
 
   // Get all all data from data service
   useEffect(() => {
     axios
       .get(`https://randomuser.me/api/?inc=name&noinfo&results=${userCount}`)
       .then(response => {
-        setPersons(response.data.results)
+        setPersons(response.data.results);
       })
       .catch(error => {
         console.log(error);
       });
   }, []);
 
-  const handleClick = (event) => {
+  const handleClick = (event, first, last) => {
     event.preventDefault();
+
+    let newName = {
+      'first': first,
+      'last': last
+    }
+
+    setGroupA(groupA.concat(newName));
+
     if (event.target.classList.contains('active')) {
       event.target.classList.remove('active');
     } else {
@@ -35,45 +44,71 @@ function App() {
     }
   }
 
-  const handleClickToGroupA = (event) => {
+  /* const handleClickToGroupA = (event) => {
     event.preventDefault();
-    console.log(persons);
-    let arr = document.getElementsByClassName("active");
-
-    for (let i = 0; i < arr.length; i++) {
-      console.log(document.getElementsByClassName('active')[i].innerText);
-    }
     
+    let actives = document.getElementsByClassName("active");
+    console.log(actives);
+
     if (document.getElementsByClassName('active')) {
       
     }
-    console.log('Clicked to group A');
-  }
+    
+  } */
 
-  const handleClickToGroupB = (event) => {
+  /* const handleClickToGroupB = (event) => {
     event.preventDefault();
-    console.log('Clicked to group B');
-  }
+  } */
+
+  console.log(groupA);
 
   return (
     <div className="App">
-      <h1>Hello Perttu and Antti</h1>
-      <ListGroup>
-        {persons.map((person, index) => {
-          return (
-            <ListPerson
-              index={index}
-              first={person.name.first}
-              last={person.name.last}
-              handleClick={handleClick}
-            />
-          );
-        })}
-      </ListGroup>
-      <div>
+      {/* <div>
         <button onClick={handleClickToGroupA}>Group A</button>
         <button onClick={handleClickToGroupB}>Group B</button>
+      </div> */}
+      <div>
+        <h1>BIGMAN</h1>
+        <ListGroup>
+          {persons.map((person, index) => {
+            return (
+              <ListPerson
+                index={index}
+                first={person.name.first}
+                last={person.name.last}
+                handleClick={handleClick}
+              />
+            );
+          })}
+        </ListGroup>
       </div>
+      <div>
+        <h1>GroupA</h1>
+        <ListGroup>
+          {groupA.map((person, index) => {
+            return (
+              <ListPerson
+                index={index}
+                first={person.first}
+                last={person.last}
+                handleClick={handleClick}
+              />
+            );
+          })}
+        </ListGroup>
+     </div>
+      
+      {/* <ListGroup>
+        {groupB.map((person, index) => {
+          <ListPerson
+            index={index}
+            first={person.name.first}
+            last={person.name.last}
+            handleClick={handleClick}
+          />
+        })}
+      </ListGroup> */}
    </div>
   );
 }
