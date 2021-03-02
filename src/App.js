@@ -27,47 +27,38 @@ function App() {
       });
   }, []);
 
-  const handleClick = (event, first, last) => {
+  const handleClick = (event) => {
     event.preventDefault();
+    event.target.classList.contains('active') ? event.target.classList.remove('active') : event.target.classList.add('active');
+  }
 
-    let newName = {
-      'first': first,
-      'last': last
-    }
-
-    setGroupA(groupA.concat(newName));
-
-    if (event.target.classList.contains('active')) {
-      event.target.classList.remove('active');
-    } else {
-      event.target.classList.add('active');
+  console.log(persons);
+  const handleClickToGroupA = (event) => {
+    event.preventDefault();
+    for (let active of document.getElementsByClassName("active")) {
+      let firstName = active.innerText.split(' ')[0];
+      let lastName = active.innerText.split(' ')[1];
+      let foundPerson = persons.find(person => person.name.first.includes(firstName) && person.name.last.includes(lastName));
+      setPersons(persons.filter(person => person !== foundPerson));
+      
+      // console.log(foundPerson);
+      // setGroupA([...groupA, foundPerson]);
+      active.classList.remove('active');
     }
   }
 
-  /* const handleClickToGroupA = (event) => {
+  const handleClickToGroupB = (event) => {
     event.preventDefault();
-    
-    let actives = document.getElementsByClassName("active");
-    console.log(actives);
+  }
 
-    if (document.getElementsByClassName('active')) {
-      
-    }
-    
-  } */
-
-  /* const handleClickToGroupB = (event) => {
-    event.preventDefault();
-  } */
-
-  console.log(groupA);
+  //console.log(groupA);
 
   return (
     <div className="App">
-      {/* <div>
+      <div>
         <button onClick={handleClickToGroupA}>Group A</button>
         <button onClick={handleClickToGroupB}>Group B</button>
-      </div> */}
+      </div>
       <div>
         <h1>BIGMAN</h1>
         <ListGroup>
