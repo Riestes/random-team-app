@@ -1,0 +1,11 @@
+.list-group-item {
+  label {
+    pointer-events: none;
+    margin: 0px;
+  }
+  .btn-outline-danger {
+    float: right;
+    line-height: 1;
+  }
+}
+
