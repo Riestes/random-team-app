@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListPerson Snapshot 1`] = `
+<Fragment>
+  <ListGroupItem
+    active={false}
+    disabled={false}
+  >
+    <label>
+      undefined undefined
+    </label>
+    <Button
+      active={false}
+      disabled={false}
+      onClick={[Function]}
+      size="sm"
+      variant="outline-danger"
+    >
+      Remove
+    </Button>
+  </ListGroupItem>
+</Fragment>
+`;

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Snapshot 1`] = `
+<Container
+  className="App"
+  fluid={false}
+>
+  <h1>
+    Grouping app
+  </h1>
+  <Button
+    active={false}
+    block={true}
+    disabled={false}
+    onClick={[Function]}
+    size="sm"
+    variant="outline-success"
+  >
+    Get persons
+  </Button>
+</Container>
+`;
