@@ -16,6 +16,8 @@ Run the application
 
 `npm start`
 
-Start test run
+Start test monitoring
 
 `npm test`
+
+Application should run at [http://localhost:3000](http://localhost:3000).
