@@ -1,7 +1,5 @@
 # Getting Started
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Setting up
 
 Clone this repository and move to project folder
